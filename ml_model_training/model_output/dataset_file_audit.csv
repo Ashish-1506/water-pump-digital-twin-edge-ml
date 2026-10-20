@@ -1,0 +1,13 @@
+file,rows,session_id,origin,labels
+dry_run_session_1.csv,308,session_1,UNKNOWN_ORIGIN,[1]
+dry_run_session_2.csv,309,session_2,UNKNOWN_ORIGIN,[1]
+dry_run_session_3.csv,308,session_3,UNKNOWN_ORIGIN,[1]
+normal_session_1.csv,308,session_1,UNKNOWN_ORIGIN,[0]
+normal_session_2.csv,309,session_2,UNKNOWN_ORIGIN,[0]
+normal_session_3.csv,255,session_3,UNKNOWN_ORIGIN,[0]
+other_fault_session_1.csv,300,session_1,UNKNOWN_ORIGIN,[3]
+other_fault_session_2.csv,300,session_2,UNKNOWN_ORIGIN,[3]
+other_fault_session_3.csv,300,session_3,UNKNOWN_ORIGIN,[3]
+overheating_session_1.csv,263,session_1,UNKNOWN_ORIGIN,[2]
+overheating_session_2.csv,308,session_2,UNKNOWN_ORIGIN,[2]
+overheating_session_3.csv,309,session_3,UNKNOWN_ORIGIN,[2]

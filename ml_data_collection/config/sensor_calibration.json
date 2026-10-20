@@ -1,0 +1,29 @@
+{
+  "mpu6050": {
+    "i2c_address": "0x68",
+    "sda_pin": 21,
+    "scl_pin": 22,
+    "accel_scale_lsb_per_g": 16384.0,
+    "range_g": 2.0,
+    "metric": "vibration_magnitude_g"
+  },
+  "acs712": {
+    "sensor_model": "ACS712-20A",
+    "adc_pin": 34,
+    "zero_voltage_v": 2.364,
+    "sensitivity_v_per_a": 0.100,
+    "voltage_divider_ratio": 0.6667,
+    "divider_resistors": "10k / 20k (2/3 ratio)",
+    "adc_vref_v": 3.3,
+    "adc_resolution": 4095,
+    "is_calibrated": true,
+    "calibration_notes": "Upgraded from failed 5A module to ACS712-20A with 10k/20k voltage divider. Quiescent baseline reconstructed: 2.364V."
+  },
+  "ds18b20": {
+    "gpio_pin": 4,
+    "resolution_bits": 10,
+    "valid_temp_min_c": 0.0,
+    "valid_temp_max_c": 95.0,
+    "notes": "Dallas 1-Wire digital temperature sensor on GPIO 4."
+  }
+}

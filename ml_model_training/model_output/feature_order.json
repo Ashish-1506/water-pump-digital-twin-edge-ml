@@ -1,0 +1,9 @@
+[
+  "vib_rms",
+  "vib_peak",
+  "vib_x",
+  "vib_y",
+  "vib_z",
+  "current",
+  "temperature"
+]

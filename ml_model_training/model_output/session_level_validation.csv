@@ -1,0 +1,3 @@
+validation_session,n_train,n_validation,accuracy,macro_f1
+session_2,1172,1226,1.0,1.0
+session_3,1226,1172,1.0,1.0

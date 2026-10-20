@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pump Twin | Live Monitor + Edge ML</title>
+  <meta name="description" content="Water pump digital twin with real-time edge ML inference from ESP32 — vibration, current, temperature and MLP condition prediction.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">P/01</span><div><p class="eyebrow">LOCAL DIGITAL TWIN · EDGE ML</p><h1>Water Pump Monitor</h1></div></div>
+      <div class="system-state" id="connection-state"><span class="status-dot"></span><span id="connection-label">WAITING FOR DEVICE</span></div>
+    </header>
+
+    <section class="hero-grid">
+      <div class="hero-copy"><p class="eyebrow">ESP32 TELEMETRY / EDGE INFERENCE</p><h2>See the machine<br><em>thinking in real time.</em></h2><p class="hero-note">The ML model runs <strong>on the ESP32</strong>. This twin mirrors sensor data, predicted pump condition, and relay decisions with no cloud required.</p></div>
+      <div class="health-panel" id="health-panel"><div class="panel-kicker">DEVICE HEALTH</div><div class="health-value"><span id="health-score">--</span><span class="health-unit">/100</span></div><div class="health-label" id="health-label">NO TELEMETRY</div><div class="health-rule"><span id="health-bar"></span></div></div>
+    </section>
+
+    <section class="meta-row"><div><span class="meta-label">PUMP STATUS</span><strong id="pump-status">UNKNOWN</strong></div><div><span class="meta-label">LAST UPDATED</span><strong id="last-updated">Awaiting first message</strong></div><div><span class="meta-label">FEED AGE</span><strong id="feed-age">--</strong></div></section>
+
+    <!-- ── ML Prediction Panel ─────────────────────────────────── -->
+    <section class="section-heading ml-heading">
+      <div><p class="eyebrow">EDGE COMPUTING · MLP MODEL</p><h2>ML Prediction</h2></div>
+      <div class="source-note"><span class="pulse-mark" id="ml-pulse-mark"></span><span id="ml-source-label">ESP32 / TFLite</span></div>
+    </section>
+    <section class="ml-panel" id="ml-panel">
+      <div class="ml-condition-card" id="ml-condition-card">
+        <div class="ml-card-label">PREDICTED CONDITION</div>
+        <div class="ml-condition-value" id="ml-condition">NO TELEMETRY</div>
+        <div class="ml-class-row">
+          <span class="ml-class-badge" id="ml-class-badge">CLASS --</span>
+          <span class="ml-infer-badge" id="ml-infer-badge">--</span>
+        </div>
+      </div>
+      <div class="ml-confidence-card">
+        <div class="ml-card-label">MODEL CONFIDENCE</div>
+        <div class="ml-conf-value" id="ml-confidence">--%</div>
+        <div class="ml-conf-track"><div class="ml-conf-bar" id="ml-conf-bar"></div></div>
+        <div class="ml-conf-note">Softmax output — highest class probability</div>
+      </div>
+      <div class="ml-classes-card">
+        <div class="ml-card-label">CLASS PROBABILITIES (last reading)</div>
+        <div class="ml-class-list" id="ml-class-list">
+          <div class="ml-class-item" id="cls-0"><span class="ml-cls-name">Normal</span><div class="ml-cls-track"><div class="ml-cls-bar"></div></div><span class="ml-cls-pct">--</span></div>
+          <div class="ml-class-item" id="cls-1"><span class="ml-cls-name">Dry Run</span><div class="ml-cls-track"><div class="ml-cls-bar"></div></div><span class="ml-cls-pct">--</span></div>
+          <div class="ml-class-item" id="cls-2"><span class="ml-cls-name">Overheating</span><div class="ml-cls-track"><div class="ml-cls-bar"></div></div><span class="ml-cls-pct">--</span></div>
+          <div class="ml-class-item" id="cls-3"><span class="ml-cls-name">Abnormal</span><div class="ml-cls-track"><div class="ml-cls-bar"></div></div><span class="ml-cls-pct">--</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Live sensor readings ──────────────────────────────────── -->
+    <section class="section-heading"><div><p class="eyebrow">LIVE SIGNALS</p><h2>Measurements</h2></div><div class="source-note"><span class="pulse-mark"></span> ESP32 / MQTT</div></section>
+    <section class="measurements">
+      <article class="measure-card temperature"><div class="card-top"><span>Temperature</span><span class="unit">°C</span></div><strong id="temperature">--</strong><div class="card-foot">DS18B20 SENSOR</div></article>
+      <article class="measure-card current"><div class="card-top"><span>Current draw</span><span class="unit">A</span></div><strong id="current">--</strong><div class="card-foot">ACS712 SENSOR</div></article>
+      <article class="measure-card vibration"><div class="card-top"><span>Vibration RMS</span><span class="unit">g</span></div><strong id="vibration">--</strong><div class="card-foot">MPU-6050 ACCELEROMETER</div></article>
+      <article class="fault-card" id="fault-card"><div class="card-top"><span>System Safety &amp; Relay</span><span class="fault-symbol">!</span></div><strong id="fault-label">NO COMMUNICATION</strong><p id="fault-detail">The twin has not received a current device state.</p></article>
+    </section>
+
+    <section class="section-heading charts-heading"><div><p class="eyebrow">RECENT HISTORY</p><h2>Signal traces</h2></div><span class="range-label">LAST 60 READINGS</span></section>
+    <section class="charts"><article class="chart-card"><div class="chart-title"><span>Temperature</span><strong>°C</strong></div><div class="chart-wrap"><canvas id="temperature-chart"></canvas></div></article><article class="chart-card"><div class="chart-title"><span>Current draw</span><strong>A</strong></div><div class="chart-wrap"><canvas id="current-chart"></canvas></div></article><article class="chart-card"><div class="chart-title"><span>Vibration RMS</span><strong>g</strong></div><div class="chart-wrap"><canvas id="vibration-chart"></canvas></div></article></section>
+
+    <section class="section-heading events-heading"><div><p class="eyebrow">AUDIT TRAIL</p><h2>Recent events</h2></div></section>
+    <section class="events-card"><div class="event-header"><span>TIME</span><span>CLASSIFICATION</span><span>HEALTH</span><span>ACTION</span></div><div id="events-list"><div class="empty-state">No fault or relay events recorded.</div></div></section>
+    <footer><span>PUMP/01 DIGITAL TWIN</span><span>LOCAL ONLY · MQTT → FLASK → SQLITE · EDGE ML ON ESP32</span></footer>
+  </main>
+
+  <!-- ── Sensor Disconnection Blackout Overlay ────────────────── -->
+  <div id="sensor-blackout-overlay" class="sensor-blackout hidden" role="alertdialog" aria-modal="true">
+    <div class="sensor-modal">
+      <div class="sensor-modal-icon">⚠️</div>
+      <div class="sensor-modal-kicker">CRITICAL SENSOR FAULT DETECTED</div>
+      <h2 class="sensor-modal-title">Sensor Disconnected</h2>
+      <p class="sensor-modal-desc">
+        A required sensor has stopped sending telemetry or has been physically disconnected. All dashboard metrics are shielded to prevent invalid analysis until sensor link is restored.
+      </p>
+      <div class="disconnected-sensor-box">
+        <span class="box-label">FAULTY / DISCONNECTED HARDWARE</span>
+        <div id="disconnected-sensor-name" class="disconnected-sensor-name">DS18B20 Temperature Sensor</div>
+      </div>
+      <div class="sensor-modal-actions">
+        <button id="btn-retry-sensors" class="btn-retry" type="button" onclick="retrySensorCheck()">
+          <span class="btn-icon">↻</span> Retry &amp; Recheck Sensors
+        </button>
+      </div>
+      <div class="sensor-modal-footer">
+        Inspect physical sensor wiring, VCC, GND, and pin connections on the ESP32.
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js?v=5"></script>
+</body>
+</html>
+

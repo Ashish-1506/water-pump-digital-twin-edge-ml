@@ -1,0 +1,16 @@
+{
+  "session_name": "overload_session_20261015_132935",
+  "pump_id": "PUMP_01",
+  "condition_label": "OVERLOAD",
+  "label_id": 2,
+  "notes": "Round 2: Constricted outlet",
+  "start_time_utc": "2026-10-15T13:29:35.557287+00:00",
+  "end_time_utc": "2026-10-15T13:32:37.187871+00:00",
+  "duration_seconds": 181.63,
+  "total_records": 308,
+  "malformed_records": 20,
+  "disconnect_count": 0,
+  "port": "COM5",
+  "baud": 115200,
+  "csv_filename": "overload_session_20261015_132935.csv"
+}

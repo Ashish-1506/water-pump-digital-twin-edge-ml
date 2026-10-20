@@ -1,0 +1,11 @@
+{
+  "figure_directory": "C:\\Users\\ASHISH\\Desktop\\WaterPumpMonitoring-main\\ML\\model_output\\report_figures",
+  "png_count": 10,
+  "feature_count": 7,
+  "classes": [
+    "Normal",
+    "Dry Run",
+    "Overheating",
+    "Abnormal Operating Condition"
+  ]
+}

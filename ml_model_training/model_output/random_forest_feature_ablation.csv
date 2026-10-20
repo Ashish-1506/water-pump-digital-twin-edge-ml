@@ -1,0 +1,4 @@
+variant,features,accuracy,macro_f1
+all_features,"vib_rms, vib_peak, vib_x, vib_y, vib_z, current, temperature",0.9525021204410518,0.9532424670052312
+without_current,"vib_rms, vib_peak, vib_x, vib_y, vib_z, temperature",0.9329940627650551,0.9328390166126894
+vibration_only,"vib_rms, vib_peak, vib_x, vib_y, vib_z",0.9558948261238338,0.9567500202267971

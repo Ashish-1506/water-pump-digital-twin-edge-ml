@@ -1,0 +1,16 @@
+{
+  "session_name": "normal_session_20261015_130636",
+  "pump_id": "PUMP_01",
+  "condition_label": "NORMAL",
+  "label_id": 0,
+  "notes": "Round 1: Fully submerged, free flow",
+  "start_time_utc": "2026-10-15T13:06:36.209820+00:00",
+  "end_time_utc": "2026-10-15T13:09:38.253423+00:00",
+  "duration_seconds": 182.04,
+  "total_records": 309,
+  "malformed_records": 18,
+  "disconnect_count": 0,
+  "port": "COM5",
+  "baud": 115200,
+  "csv_filename": "normal_session_20261015_130636.csv"
+}

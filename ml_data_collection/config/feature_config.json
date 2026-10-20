@@ -1,0 +1,57 @@
+{
+  "target_classes": [
+    "NORMAL",
+    "DRY_RUN",
+    "OVERLOAD",
+    "BEARING_VIBRATION",
+    "OVERHEATING"
+  ],
+  "label_mapping": {
+    "0": "Normal",
+    "1": "Dry Run",
+    "2": "Overload",
+    "3": "Bearing / Vibration Fault",
+    "4": "Overheating"
+  },
+  "raw_csv_columns": [
+    "timestamp",
+    "vib_rms",
+    "vib_peak",
+    "vib_x",
+    "vib_y",
+    "vib_z",
+    "current",
+    "temperature",
+    "label"
+  ],
+  "feature_names": [
+    "vib_rms",
+    "vib_peak",
+    "vib_x",
+    "vib_y",
+    "vib_z",
+    "current",
+    "temperature"
+  ],
+  "window": {
+    "duration_seconds": 3.0,
+    "sampling_interval_ms": 500,
+    "min_samples_per_window": 6
+  },
+  "adaptive_baseline": {
+    "reference_class": "NORMAL",
+    "min_std_safeguard": 0.001,
+    "notes": "Standard deviation floor prevents division by zero when sensor is completely stationary or unchanging."
+  },
+  "health_score": {
+    "base_score": 100.0,
+    "weights": {
+      "vibration": 0.33,
+      "current": 0.34,
+      "temperature": 0.33
+    },
+    "penalty_scaling": 10.0,
+    "formula": "max(0.0, min(100.0, base_score - penalty_scaling * (w_vib * abs(z_vibration) + w_curr * abs(z_current) + w_temp * abs(z_temperature))))",
+    "notes": "Composite health indicator reflecting aggregate standard deviation drift. Configurable heuristic, subject to ablation testing."
+  }
+}

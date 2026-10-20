@@ -1,0 +1,542 @@
+{
+  "evaluation_protocol": {
+    "holdout_session": "session_1",
+    "train_files": [
+      "dry_run_session_2.csv",
+      "dry_run_session_3.csv",
+      "normal_session_2.csv",
+      "normal_session_3.csv",
+      "other_fault_session_2.csv",
+      "other_fault_session_3.csv",
+      "overheating_session_2.csv",
+      "overheating_session_3.csv"
+    ],
+    "test_files": [
+      "dry_run_session_1.csv",
+      "normal_session_1.csv",
+      "other_fault_session_1.csv",
+      "overheating_session_1.csv"
+    ],
+    "development_validation": [
+      {
+        "validation_session": "session_2",
+        "n_train": 1172,
+        "n_validation": 1226,
+        "accuracy": 1.0,
+        "macro_f1": 1.0
+      },
+      {
+        "validation_session": "session_3",
+        "n_train": 1226,
+        "n_validation": 1172,
+        "accuracy": 1.0,
+        "macro_f1": 1.0
+      }
+    ],
+    "class_3_origins": [
+      "unknown_origin"
+    ],
+    "important_limitation": "Performance applies to this dataset and split only. Independent physical sessions, verified fault labels, and deployment testing are required before claiming general real-world performance."
+  },
+  "logistic_regression": {
+    "accuracy": 0.9397794741306191,
+    "macro_precision": 0.9433753974667805,
+    "macro_recall": 0.9391505769262423,
+    "macro_f1": 0.9407172835279648,
+    "weighted_precision": 0.9414819314351712,
+    "weighted_recall": 0.9397794741306191,
+    "weighted_f1": 0.9401068480531953,
+    "classification_report": {
+      "Normal": {
+        "precision": 0.8960244648318043,
+        "recall": 0.9512987012987013,
+        "f1-score": 0.9228346456692913,
+        "support": 308.0
+      },
+      "Dry Run": {
+        "precision": 0.9169329073482428,
+        "recall": 0.9318181818181818,
+        "f1-score": 0.9243156199677939,
+        "support": 308.0
+      },
+      "Overheating": {
+        "precision": 0.9877551020408163,
+        "recall": 0.9201520912547528,
+        "f1-score": 0.952755905511811,
+        "support": 263.0
+      },
+      "Abnormal Operating Condition": {
+        "precision": 0.9727891156462585,
+        "recall": 0.9533333333333334,
+        "f1-score": 0.9629629629629629,
+        "support": 300.0
+      },
+      "accuracy": 0.9397794741306191,
+      "macro avg": {
+        "precision": 0.9433753974667805,
+        "recall": 0.9391505769262423,
+        "f1-score": 0.9407172835279648,
+        "support": 1179.0
+      },
+      "weighted avg": {
+        "precision": 0.9414819314351712,
+        "recall": 0.9397794741306191,
+        "f1-score": 0.9401068480531953,
+        "support": 1179.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        293,
+        15,
+        0,
+        0
+      ],
+      [
+        13,
+        287,
+        0,
+        8
+      ],
+      [
+        21,
+        0,
+        242,
+        0
+      ],
+      [
+        0,
+        11,
+        3,
+        286
+      ]
+    ],
+    "labels_in_matrix": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "random_forest": {
+    "accuracy": 0.9525021204410518,
+    "macro_precision": 0.954859636298952,
+    "macro_recall": 0.9521285368623771,
+    "macro_f1": 0.9532424670052312,
+    "weighted_precision": 0.9533185449755588,
+    "weighted_recall": 0.9525021204410518,
+    "weighted_f1": 0.9526749751277099,
+    "classification_report": {
+      "Normal": {
+        "precision": 0.9242902208201893,
+        "recall": 0.9512987012987013,
+        "f1-score": 0.9376,
+        "support": 308.0
+      },
+      "Dry Run": {
+        "precision": 0.9299363057324841,
+        "recall": 0.948051948051948,
+        "f1-score": 0.9389067524115756,
+        "support": 308.0
+      },
+      "Overheating": {
+        "precision": 0.9919678714859438,
+        "recall": 0.9391634980988594,
+        "f1-score": 0.96484375,
+        "support": 263.0
+      },
+      "Abnormal Operating Condition": {
+        "precision": 0.9732441471571907,
+        "recall": 0.97,
+        "f1-score": 0.9716193656093489,
+        "support": 300.0
+      },
+      "accuracy": 0.9525021204410518,
+      "macro avg": {
+        "precision": 0.954859636298952,
+        "recall": 0.9521285368623771,
+        "f1-score": 0.9532424670052312,
+        "support": 1179.0
+      },
+      "weighted avg": {
+        "precision": 0.9533185449755588,
+        "recall": 0.9525021204410518,
+        "f1-score": 0.9526749751277099,
+        "support": 1179.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        293,
+        15,
+        0,
+        0
+      ],
+      [
+        8,
+        292,
+        0,
+        8
+      ],
+      [
+        16,
+        0,
+        247,
+        0
+      ],
+      [
+        0,
+        7,
+        2,
+        291
+      ]
+    ],
+    "labels_in_matrix": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "mlp": {
+    "accuracy": 0.9711620016963528,
+    "macro_precision": 0.9722365378495703,
+    "macro_recall": 0.9719949632116933,
+    "macro_f1": 0.9720228807317608,
+    "weighted_precision": 0.9714365279605534,
+    "weighted_recall": 0.9711620016963528,
+    "weighted_f1": 0.9712022386003799,
+    "classification_report": {
+      "Normal": {
+        "precision": 0.979933110367893,
+        "recall": 0.9512987012987013,
+        "f1-score": 0.9654036243822076,
+        "support": 308.0
+      },
+      "Dry Run": {
+        "precision": 0.939873417721519,
+        "recall": 0.9642857142857143,
+        "f1-score": 0.9519230769230769,
+        "support": 308.0
+      },
+      "Overheating": {
+        "precision": 0.9923954372623575,
+        "recall": 0.9923954372623575,
+        "f1-score": 0.9923954372623575,
+        "support": 263.0
+      },
+      "Abnormal Operating Condition": {
+        "precision": 0.9767441860465116,
+        "recall": 0.98,
+        "f1-score": 0.978369384359401,
+        "support": 300.0
+      },
+      "accuracy": 0.9711620016963528,
+      "macro avg": {
+        "precision": 0.9722365378495703,
+        "recall": 0.9719949632116933,
+        "f1-score": 0.9720228807317608,
+        "support": 1179.0
+      },
+      "weighted avg": {
+        "precision": 0.9714365279605534,
+        "recall": 0.9711620016963528,
+        "f1-score": 0.9712022386003799,
+        "support": 1179.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        293,
+        15,
+        0,
+        0
+      ],
+      [
+        4,
+        297,
+        0,
+        7
+      ],
+      [
+        2,
+        0,
+        261,
+        0
+      ],
+      [
+        0,
+        4,
+        2,
+        294
+      ]
+    ],
+    "labels_in_matrix": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "hardware_only": {
+    "logistic_regression": {
+      "accuracy": 0.9351535836177475,
+      "macro_precision": 0.7115888976649047,
+      "macro_recall": 0.700817243592909,
+      "macro_f1": 0.7055585234527066,
+      "weighted_precision": 0.9461632786384103,
+      "weighted_recall": 0.9351535836177475,
+      "weighted_f1": 0.9398400318799176,
+      "classification_report": {
+        "Normal": {
+          "precision": 0.8960244648318043,
+          "recall": 0.9512987012987013,
+          "f1-score": 0.9228346456692913,
+          "support": 308.0
+        },
+        "Dry Run": {
+          "precision": 0.9503311258278145,
+          "recall": 0.9318181818181818,
+          "f1-score": 0.940983606557377,
+          "support": 308.0
+        },
+        "Overheating": {
+          "precision": 1.0,
+          "recall": 0.9201520912547528,
+          "f1-score": 0.9584158415841584,
+          "support": 263.0
+        },
+        "Abnormal Operating Condition": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "accuracy": 0.9351535836177475,
+        "macro avg": {
+          "precision": 0.7115888976649047,
+          "recall": 0.700817243592909,
+          "f1-score": 0.7055585234527066,
+          "support": 879.0
+        },
+        "weighted avg": {
+          "precision": 0.9461632786384103,
+          "recall": 0.9351535836177475,
+          "f1-score": 0.9398400318799176,
+          "support": 879.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          293,
+          15,
+          0,
+          0
+        ],
+        [
+          13,
+          287,
+          0,
+          8
+        ],
+        [
+          21,
+          0,
+          242,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "labels_in_matrix": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "random_forest": {
+      "accuracy": 0.9465301478953356,
+      "macro_precision": 0.7188575714916923,
+      "macro_recall": 0.7096285368623771,
+      "macro_f1": 0.7139552367288379,
+      "weighted_precision": 0.9563509989508132,
+      "weighted_recall": 0.9465301478953356,
+      "weighted_f1": 0.9510860254332316,
+      "classification_report": {
+        "Normal": {
+          "precision": 0.9242902208201893,
+          "recall": 0.9512987012987013,
+          "f1-score": 0.9376,
+          "support": 308.0
+        },
+        "Dry Run": {
+          "precision": 0.9511400651465798,
+          "recall": 0.948051948051948,
+          "f1-score": 0.9495934959349593,
+          "support": 308.0
+        },
+        "Overheating": {
+          "precision": 1.0,
+          "recall": 0.9391634980988594,
+          "f1-score": 0.9686274509803922,
+          "support": 263.0
+        },
+        "Abnormal Operating Condition": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "accuracy": 0.9465301478953356,
+        "macro avg": {
+          "precision": 0.7188575714916923,
+          "recall": 0.7096285368623771,
+          "f1-score": 0.7139552367288379,
+          "support": 879.0
+        },
+        "weighted avg": {
+          "precision": 0.9563509989508132,
+          "recall": 0.9465301478953356,
+          "f1-score": 0.9510860254332316,
+          "support": 879.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          293,
+          15,
+          0,
+          0
+        ],
+        [
+          8,
+          292,
+          0,
+          8
+        ],
+        [
+          16,
+          0,
+          247,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "labels_in_matrix": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "mlp": {
+      "accuracy": 0.9681456200227532,
+      "macro_precision": 0.7329640468227425,
+      "macro_recall": 0.7269949632116933,
+      "macro_f1": 0.7299128366545276,
+      "weighted_precision": 0.9761225320655503,
+      "weighted_recall": 0.9681456200227532,
+      "weighted_f1": 0.9720413771144126,
+      "classification_report": {
+        "Normal": {
+          "precision": 0.979933110367893,
+          "recall": 0.9512987012987013,
+          "f1-score": 0.9654036243822076,
+          "support": 308.0
+        },
+        "Dry Run": {
+          "precision": 0.9519230769230769,
+          "recall": 0.9642857142857143,
+          "f1-score": 0.9580645161290322,
+          "support": 308.0
+        },
+        "Overheating": {
+          "precision": 1.0,
+          "recall": 0.9923954372623575,
+          "f1-score": 0.9961832061068703,
+          "support": 263.0
+        },
+        "Abnormal Operating Condition": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "accuracy": 0.9681456200227532,
+        "macro avg": {
+          "precision": 0.7329640468227425,
+          "recall": 0.7269949632116933,
+          "f1-score": 0.7299128366545276,
+          "support": 879.0
+        },
+        "weighted avg": {
+          "precision": 0.9761225320655503,
+          "recall": 0.9681456200227532,
+          "f1-score": 0.9720413771144126,
+          "support": 879.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          293,
+          15,
+          0,
+          0
+        ],
+        [
+          4,
+          297,
+          0,
+          7
+        ],
+        [
+          2,
+          0,
+          261,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "labels_in_matrix": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "mlp_selected_epochs": 197,
+  "tflite_size_bytes": 5692,
+  "tflite_max_abs_probability_difference": 5.364418029785156e-07,
+  "tflite_class_agreement": 1.0,
+  "feature_order": [
+    "vib_rms",
+    "vib_peak",
+    "vib_x",
+    "vib_y",
+    "vib_z",
+    "current",
+    "temperature"
+  ],
+  "class_names": {
+    "0": "Normal",
+    "1": "Dry Run",
+    "2": "Overheating",
+    "3": "Abnormal Operating Condition"
+  }
+}

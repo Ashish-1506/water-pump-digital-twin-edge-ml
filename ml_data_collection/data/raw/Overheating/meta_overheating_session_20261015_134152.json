@@ -1,0 +1,16 @@
+{
+  "session_name": "overheating_session_20261015_134152",
+  "pump_id": "PUMP_01",
+  "condition_label": "OVERHEATING",
+  "label_id": 4,
+  "notes": "Round 2: Thermal rise verification",
+  "start_time_utc": "2026-10-15T13:41:52.979952+00:00",
+  "end_time_utc": "2026-10-15T13:44:55.021172+00:00",
+  "duration_seconds": 182.04,
+  "total_records": 308,
+  "malformed_records": 19,
+  "disconnect_count": 0,
+  "port": "COM5",
+  "baud": 115200,
+  "csv_filename": "overheating_session_20261015_134152.csv"
+}

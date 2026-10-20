@@ -1,0 +1,57 @@
+{
+  "features": [
+    "vib_rms",
+    "vib_peak",
+    "vib_x",
+    "vib_y",
+    "vib_z",
+    "current",
+    "temperature"
+  ],
+  "scaler_mean": [
+    1.7104240657887526,
+    1.9692557257249814,
+    -0.8696258426088532,
+    0.012625154009252914,
+    0.421926726308118,
+    0.578289903962893,
+    35.08227240074864
+  ],
+  "scaler_scale": [
+    0.7602102320546072,
+    0.9137547753890416,
+    0.23965520285981018,
+    0.6119033119808688,
+    0.6470106262838639,
+    0.3575565818046133,
+    1.963440183125283
+  ],
+  "feature_multipliers": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "formula": "model_input[i] = (raw_feature[i] - scaler_mean[i]) / scaler_scale[i]",
+  "class_names": {
+    "0": "Normal",
+    "1": "Dry Run",
+    "2": "Overheating",
+    "3": "Abnormal Operating Condition"
+  },
+  "target_labels": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "Scaler was fitted on all training sessions, excluding the held-out test session.",
+    "Random Forest is trained on raw features; Logistic Regression and MLP use standardized features.",
+    "TFLite model does not include StandardScaler preprocessing.",
+    "Firmware must use the exact feature definitions, units, order, means, and scales."
+  ]
+}

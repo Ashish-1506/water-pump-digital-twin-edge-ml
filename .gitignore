@@ -1,0 +1,63 @@
+# ==============================================================================
+# Git Ignore Configuration for Water Pump Monitoring & Edge ML Project
+# ==============================================================================
+
+# Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# SQLite & Runtime Database Files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+water-pump-digital-twin/pump.db*
+
+# Node / Frontend Artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & Secret Variables
+.env
+.env.*
+*.local
+
+# IDE & Editor Specific Folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Arduino & Embedded Build Artifacts
+*.hex
+*.elf
+*.bin
+build/
+.arduinoIDE/

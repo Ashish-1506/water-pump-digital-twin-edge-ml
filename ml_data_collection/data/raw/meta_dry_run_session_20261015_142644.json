@@ -1,0 +1,16 @@
+{
+  "session_name": "dry_run_session_20261015_142644",
+  "pump_id": "PUMP_01",
+  "condition_label": "DRY_RUN",
+  "label_id": 1,
+  "notes": "Round 2: Dry run verification",
+  "start_time_utc": "2026-10-15T14:26:44.080196+00:00",
+  "end_time_utc": "2026-10-15T14:29:46.115853+00:00",
+  "duration_seconds": 182.03,
+  "total_records": 309,
+  "malformed_records": 18,
+  "disconnect_count": 0,
+  "port": "COM5",
+  "baud": 115200,
+  "csv_filename": "dry_run_session_20261015_142644.csv"
+}
